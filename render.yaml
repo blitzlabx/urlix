@@ -1,0 +1,16 @@
+# Urlix - Render Blueprint
+# Creator: Blitz (blitzlabx)
+
+services:
+  - type: web
+    name: urlix
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8080
+    autoDeploy: true

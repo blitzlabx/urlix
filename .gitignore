@@ -1,0 +1,8 @@
+# Urlix
+.env
+*.log
+/tmp/
+.DS_Store
+*.swp
+luacov.*
+.luacheckcache
