@@ -96,7 +96,7 @@ urlix/
 └── README.md
 ```
 
-**Runtime:** OpenResty (Nginx + LuaJIT). Outbound HTTP uses `lua-resty-http`. DNS uses `resty.dns.resolver`. Rate limits use `ngx.shared` dict.
+**Runtime:** OpenResty (Nginx + LuaJIT). Outbound HTTP uses vendored `lua-resty-http` (`lua/resty/`). DNS uses vendored `resty.dns.resolver`. Rate limits use `ngx.shared` dict.
 
 ---
 

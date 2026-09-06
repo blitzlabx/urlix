@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # App directory
 WORKDIR /app
 
+# Vendored: lua-resty-http + lua-resty-dns under lua/resty/
 # Copy application
 COPY conf/ /app/conf/
 COPY lua/ /app/lua/
