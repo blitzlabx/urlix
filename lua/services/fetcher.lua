@@ -144,16 +144,22 @@ function _M.fetch(url, opts)
         total_time = total_time + elapsed
 
         if not res then
+            local err_msg = req_err or "request failed"
+            -- Map common OpenSSL errors to clearer messages
+            if type(err_msg) == "string" and err_msg:find("certificate", 1, true) then
+                err_msg = "TLS certificate verification failed: " .. err_msg
+                    .. " (ensure system CA certificates are available)"
+            end
             table.insert(issues, {
                 type = "network",
-                message = req_err or "request failed",
+                message = err_msg,
                 url = current,
                 hop = hop
             })
             httpc:close()
             return {
                 success = false,
-                error = req_err or "Failed to fetch URL",
+                error = err_msg,
                 error_code = "FETCH_FAILED",
                 redirect_chain = chain,
                 issues = issues,
